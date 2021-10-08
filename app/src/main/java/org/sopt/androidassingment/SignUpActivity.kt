@@ -15,11 +15,11 @@ class SignUpActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        loginClick()
+        signCompleteClick()
         setContentView(binding.root)
     }
 
-    private fun loginClick(){
+    private fun signCompleteClick(){
         binding.btnLogin.setOnClickListener {
             val name = binding.etName.text.toString()
             val id = binding.etId.text.toString()
