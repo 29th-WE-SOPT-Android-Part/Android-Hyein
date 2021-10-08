@@ -69,7 +69,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_id"
-        app:layout_constraintTop_toBottomOf="@+id/tv_id" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_id"
+        android:autofillHints="no" />
 
     <EditText
         android:id="@+id/et_pass"
@@ -87,7 +88,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_pass"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pass" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_pass"
+        android:autofillHints="no" />
 
     <Button
         android:id="@+id/btn_login"

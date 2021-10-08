@@ -2,18 +2,17 @@ package org.sopt.androidassingment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import org.sopt.androidassingment.databinding.ActivityMainBinding
+import org.sopt.androidassingment.databinding.ActivitySiginlnBinding
 
 class SiginlnActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivitySiginlnBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySiginlnBinding.inflate(layoutInflater)
 
         loginClick()
         signClick()
