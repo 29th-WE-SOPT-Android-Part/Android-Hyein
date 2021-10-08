@@ -11,4 +11,9 @@
     <string name="name_name">이름</string>
     <string name="name_hint">이름을 입력해주세요</string>
     <string name="sign_complete">회원가입 완료</string>
+    <string name="img_description">hyein\'s picture</string>
+    <string name="introduce_name">이름 김혜인</string>
+    <string name="introduce_age">나이 22</string>
+    <string name="introduce_mbti">MBTI INTP</string>
+    <string name="introduce_myself">안녕하세요 김해인 아니고\n부산인인 김혜인입니다!</string>
 </resources>
