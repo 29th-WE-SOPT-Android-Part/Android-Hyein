@@ -6,12 +6,13 @@
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/drawable/border.xml" value="0.1" />
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/drawable/border_btn.xml" value="0.26979166666666665" />
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1703125" />
-        <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/activity_siginln.xml" value="0.2" />
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/activity_signIn.xml" value="0.15416666666666667" />
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/fragment_follower.xml" value="0.16" />
+        <entry key="..\:/android_hyein/AndroidProject/Android-Hyein/app/src/main/res/layout/item_follower_list.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>
