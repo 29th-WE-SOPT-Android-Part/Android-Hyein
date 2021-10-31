@@ -3,6 +3,7 @@ package org.sopt.androidassingment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.sopt.androidassingment.databinding.ItemFollowerListBinding
 
 class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
@@ -13,6 +14,10 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
             LayoutInflater.from(parent.context),
             parent, false
         )
+        Glide.with(parent.context)
+            .load("https://avatars.githubusercontent.com/u/68214704?v=4")
+            .circleCrop()
+            .into(binding.ivProfile)
         return FollowerViewHolder(binding)
     }
 

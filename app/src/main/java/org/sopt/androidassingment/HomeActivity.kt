@@ -3,6 +3,7 @@ package org.sopt.androidassingment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import org.sopt.androidassingment.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
 
         initTransactionEvent()
-
+        initImage()
         setContentView(binding.root)
     }
 
@@ -39,6 +40,13 @@ class HomeActivity : AppCompatActivity() {
                 position = REPOSITORY_POSITION
             }
         }
+    }
+
+    private fun initImage(){
+        Glide.with(this)
+            .load("https://avatars.githubusercontent.com/u/68214704?v=4")
+            .circleCrop()
+            .into(binding.imgSelf)
     }
 
     companion object{

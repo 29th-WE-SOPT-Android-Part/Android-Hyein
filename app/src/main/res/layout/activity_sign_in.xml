@@ -79,7 +79,7 @@
         android:includeFontPadding="false"
         android:textSize="14sp"
         android:ems="10"
-        android:hint="@string/id_hint"
+        android:hint="@string/pass_hint"
         android:background="@drawable/selector_sample_text"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"

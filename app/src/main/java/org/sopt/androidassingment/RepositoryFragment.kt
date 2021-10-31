@@ -35,12 +35,16 @@ class RepositoryFragment : Fragment() {
 
         repositoryAdapter.repositoryList.addAll(
             listOf(
-                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제입니다!"),
-                RepositoryData("기획 과제 레포지토리", "기획 파트 과제"),
-                RepositoryData("디자인 과제 레포지토리", "디자인 파트 과제"),
-                RepositoryData("iOS 과제 레포지토리", "iOS 파트 과제"),
-                RepositoryData("서버 과제 레포지토리", "서버 파트 과제"),
-                RepositoryData("웹 과제 레포지토리", "웹 파트 과제")
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제"),
+                RepositoryData("안드로이드 과제 레포지토리", "안드로이드 파트 과제")
             )
         )
 
