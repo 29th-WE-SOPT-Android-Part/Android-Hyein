@@ -3,37 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/border"
-    android:layout_margin="20dp"
-    android:padding="20dp">
+    android:layout_height="wrap_content">
 
 
     <TextView
-        android:id="@+id/tv_repo_title"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="21dp"
+        android:fontFamily="@font/noto_sans_kr"
+        android:includeFontPadding="false"
+        android:textColor="#333333"
+        android:textFontWeight="700"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="레포지토리 제목" />
+        tools:text="안드로이드 과제 레포지토리" />
 
     <TextView
-        android:id="@+id/tv_repo_introduce"
+        android:id="@+id/tv_introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/noto_sans_kr"
+        android:includeFontPadding="false"
+        android:textColor="#333333"
+        android:textFontWeight="400"
         android:textSize="14sp"
-        android:gravity="center"
-        android:ems="10"
-        android:maxLines="1"
-        android:ellipsize="end"
-        app:layout_constraintEnd_toEndOf="@+id/tv_repo_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_repo_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_repo_title"
-        tools:text="레포지토리 설명을 적으세요!" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        tools:text="안드로이드 파트 과제" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
