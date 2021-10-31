@@ -8,7 +8,7 @@
 
 
 
-<img src="https://user-images.githubusercontent.com/68214704/137966494-544eb7fa-5386-427a-8eee-cd8db2c29130.gif" width="30%" height="30%"/>
+<img src="https://user-images.githubusercontent.com/68214704/139574879-945dd39d-c560-47be-af82-bbc0198ac496.gif" width="30%" height="30%"/>
 
 
 
@@ -228,3 +228,4 @@
    
    - 이런 식으로 checked를 이용해주어야 한다.
    
+
