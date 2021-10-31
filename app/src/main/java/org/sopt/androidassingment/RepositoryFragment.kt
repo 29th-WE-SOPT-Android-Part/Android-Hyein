@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.sopt.androidassingment.databinding.FragmentRepositoryBinding
 
 class RepositoryFragment : Fragment() {
@@ -20,6 +22,7 @@ class RepositoryFragment : Fragment() {
         _binding = FragmentRepositoryBinding.inflate(layoutInflater, container, false)
 
         initAdapter()
+        decorationView()
 
         return binding.root
     }
@@ -49,5 +52,9 @@ class RepositoryFragment : Fragment() {
         )
 
         repositoryAdapter.notifyDataSetChanged()
+    }
+
+    private fun decorationView(){
+        binding.rvFollower.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
     }
 }

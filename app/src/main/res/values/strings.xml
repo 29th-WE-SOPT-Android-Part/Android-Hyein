@@ -14,7 +14,7 @@
     <string name="img_description">hyein\'s picture</string>
     <string name="home_name">Hyein Kim</string>
     <string name="home_id">sdu07024</string>
-    <string name="home_introduce">|초보개발자 김혜인</string>
+    <string name="home_introduce">| 초보개발자 김혜인</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_btn_follower">팔로워 목록</string>

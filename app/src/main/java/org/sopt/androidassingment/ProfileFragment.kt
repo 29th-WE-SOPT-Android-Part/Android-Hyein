@@ -1,10 +1,14 @@
 package org.sopt.androidassingment
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import org.sopt.androidassingment.databinding.FragmentProfileBinding
 
@@ -38,11 +42,18 @@ class ProfileFragment : Fragment() {
         val repositoryFragment = RepositoryFragment()
 
         childFragmentManager.beginTransaction().add(R.id.container_profile, followerFragment).commit()
+
         binding.btnFollower.setOnClickListener{
             if(position == REPOSITORY_POSITION) {
                 val transaction = childFragmentManager.beginTransaction()
                 transaction.replace(R.id.container_profile, followerFragment).commit()
                 position = FOLLOWER_POSITION
+            }
+            with(binding) {
+                btnFollower.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.butterscotch))
+                btnRepository.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.gray))
+                btnFollower.setTextColor(Color.WHITE)
+                btnRepository.setTextColor(Color.BLACK)
             }
         }
         binding.btnRepository.setOnClickListener{
@@ -50,6 +61,13 @@ class ProfileFragment : Fragment() {
                 val transaction = childFragmentManager.beginTransaction()
                 transaction.replace(R.id.container_profile, repositoryFragment).commit()
                 position = REPOSITORY_POSITION
+            }
+
+            with(binding) {
+                btnFollower.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.gray))
+                btnRepository.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.butterscotch))
+                btnRepository.setTextColor(Color.WHITE)
+                btnFollower.setTextColor(Color.BLACK)
             }
         }
 
