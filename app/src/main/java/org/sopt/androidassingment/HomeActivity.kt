@@ -19,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+
     private fun initTransactionEvent(){
         val followerFragment = FollowerFragment()
         val repositoryFragment = RepositoryFragment()
@@ -27,17 +28,15 @@ class HomeActivity : AppCompatActivity() {
         binding.btnFollower.setOnClickListener{
             if(position == REPOSITORY_POSITION) {
                 val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container_home, followerFragment)
+                transaction.replace(R.id.container_home, followerFragment).commit()
                 position = FOLLOWER_POSITION
-                transaction.commit()
             }
         }
         binding.btnRepository.setOnClickListener{
             if(position == FOLLOWER_POSITION) {
                 val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container_home, repositoryFragment)
+                transaction.replace(R.id.container_home, repositoryFragment).commit()
                 position = REPOSITORY_POSITION
-                transaction.commit()
             }
         }
     }
