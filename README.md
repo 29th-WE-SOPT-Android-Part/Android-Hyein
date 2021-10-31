@@ -8,7 +8,7 @@
 
 
 
-<img src="https://user-images.githubusercontent.com/68214704/139574879-945dd39d-c560-47be-af82-bbc0198ac496.gif" width="30%" height="30%"/>
+<img src="https://user-images.githubusercontent.com/68214704/139586959-759a121b-1ca9-495c-ab5f-64bf9c1ebc5a.gif" width="30%" height="30%"/>
 
 
 
@@ -61,11 +61,18 @@
       val repositoryFragment = RepositoryFragment()
   
       childFragmentManager.beginTransaction().add(R.id.container_profile, followerFragment).commit()
+  
       binding.btnFollower.setOnClickListener{
           if(position == REPOSITORY_POSITION) {
               val transaction = childFragmentManager.beginTransaction()
               transaction.replace(R.id.container_profile, followerFragment).commit()
               position = FOLLOWER_POSITION
+          }
+          with(binding) {
+              btnFollower.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.butterscotch))
+              btnRepository.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.gray))
+              btnFollower.setTextColor(Color.WHITE)
+              btnRepository.setTextColor(Color.BLACK)
           }
       }
       binding.btnRepository.setOnClickListener{
@@ -74,20 +81,21 @@
               transaction.replace(R.id.container_profile, repositoryFragment).commit()
               position = REPOSITORY_POSITION
           }
+  
+          with(binding) {
+              btnFollower.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.gray))
+              btnRepository.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.butterscotch))
+              btnRepository.setTextColor(Color.WHITE)
+              btnFollower.setTextColor(Color.BLACK)
+          }
       }
   
-  }
-  
-  private fun initImage(){
-      Glide.with(this)
-      .load("https://avatars.githubusercontent.com/u/68214704?v=4")
-      .circleCrop()
-      .into(binding.imgSelf)
   }
   ``````
 
   - `ChildFragmentManager`로 transaction을 관리
   - `Glide`를 통해 외부의 image를 넣어준다.
+  - `backgroundTintList`와 `setTextColor`를 통해 클릭 시 tint색상과 text색상이 바뀌도록 했다.
 
   
 
