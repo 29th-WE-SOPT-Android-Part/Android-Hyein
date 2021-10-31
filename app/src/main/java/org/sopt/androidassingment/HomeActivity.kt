@@ -1,13 +1,12 @@
 package org.sopt.androidassingment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import org.sopt.androidassingment.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
-    private var position = FOLLOWER_POSITION
     private lateinit var binding : ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,42 +14,37 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
 
-        initTransactionEvent()
-        initImage()
+        initBottomNavigation()
         setContentView(binding.root)
     }
 
 
-    private fun initTransactionEvent(){
-        val followerFragment = FollowerFragment()
-        val repositoryFragment = RepositoryFragment()
+    private fun initBottomNavigation(){
+        val profileFragment = ProfileFragment()
+        val homeFragment = HomeFragment()
+        val cameraFragment = CameraFragment()
 
-        supportFragmentManager.beginTransaction().add(R.id.container_home, followerFragment).commit()
-        binding.btnFollower.setOnClickListener{
-            if(position == REPOSITORY_POSITION) {
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container_home, followerFragment).commit()
-                position = FOLLOWER_POSITION
+
+        supportFragmentManager.beginTransaction().add(R.id.container_home, profileFragment).commit()
+        binding.bnvHome.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.menu_home -> {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.container_home, homeFragment).commit()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.menu_person -> {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.container_home, profileFragment).commit()
+                    return@setOnItemSelectedListener true
+                }
+                else->{
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.container_home, cameraFragment).commit()
+                    return@setOnItemSelectedListener true
+                }
             }
         }
-        binding.btnRepository.setOnClickListener{
-            if(position == FOLLOWER_POSITION) {
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.container_home, repositoryFragment).commit()
-                position = REPOSITORY_POSITION
-            }
-        }
     }
 
-    private fun initImage(){
-        Glide.with(this)
-            .load("https://avatars.githubusercontent.com/u/68214704?v=4")
-            .circleCrop()
-            .into(binding.imgSelf)
-    }
-
-    companion object{
-        const val FOLLOWER_POSITION = 1
-        const val REPOSITORY_POSITION = 2
-    }
 }
