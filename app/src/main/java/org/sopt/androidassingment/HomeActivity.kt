@@ -24,7 +24,6 @@ class HomeActivity : AppCompatActivity() {
         val homeFragment = HomeFragment()
         val cameraFragment = CameraFragment()
 
-
         supportFragmentManager.beginTransaction().add(R.id.container_home, profileFragment).commit()
         binding.bnvHome.setOnItemSelectedListener {
             when(it.itemId){
