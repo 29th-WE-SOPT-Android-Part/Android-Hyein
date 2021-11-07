@@ -37,16 +37,11 @@ class FollowerFragment : Fragment() {
 
         followerAdapter.followerList.addAll(
             listOf(
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원"),
-                FollowerData("김혜인", "안드로이드 파트원")
+                FollowerData("https://avatars.githubusercontent.com/u/68214704?v=4" ,"김혜인", "안드로이드 파트원"),
+                FollowerData("https://avatars.githubusercontent.com/u/70698151?v=4" ,"문다빈", "안드로이드 파트장"),
+                FollowerData("https://avatars.githubusercontent.com/u/81508084?v=4" ,"한승현", "안드로이드 파트원"),
+                FollowerData("https://avatars.githubusercontent.com/u/52950523?v=4" ,"최유림", "안드로이드 파트원"),
+                FollowerData("https://avatars.githubusercontent.com/u/50603273?v=4" ,"이동기", "안드로이드 파트원")
             )
         )
 

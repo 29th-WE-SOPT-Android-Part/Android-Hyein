@@ -14,10 +14,6 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
             LayoutInflater.from(parent.context),
             parent, false
         )
-        Glide.with(parent.context)
-            .load("https://avatars.githubusercontent.com/u/68214704?v=4")
-            .circleCrop()
-            .into(binding.ivProfile)
         return FollowerViewHolder(binding)
     }
 
@@ -30,8 +26,8 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
     class FollowerViewHolder(private val binding: ItemFollowerListBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: FollowerData){
-            binding.tvName.text = data.name
-            binding.tvIntroduce.text = data.introduction
+            //데이터 바인딩
+            binding.follower = data
         }
     }
 }
