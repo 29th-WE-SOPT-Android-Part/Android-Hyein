@@ -13,4 +13,5 @@ object ServiceCreator {
         .build()
 
     val loginService: LoginService = retrofit.create(LoginService::class.java)
+    val singUpService : SignUpService = retrofit.create(SignUpService::class.java)
 }

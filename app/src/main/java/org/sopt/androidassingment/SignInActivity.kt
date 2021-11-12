@@ -24,18 +24,6 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun loginClick(){
-        /*
-        val intent = Intent(this, HomeActivity::class.java)
-        binding.btnLogin.setOnClickListener {
-            val id = binding.etId.text.toString()
-            val password = binding.etPass.text.toString()
-            if(id.isNotEmpty() && password.isNotEmpty()) {
-                Toast.makeText(this, "${id}님 환영합니다", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
-            } else { Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()}
-        }
-
-         */
         binding.btnLogin.setOnClickListener {
             initNetwork()
         }
