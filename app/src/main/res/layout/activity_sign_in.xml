@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInActivity">
+
+    <TextView
+        android:id="@+id/tv_sopt_hub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/sopt_title"
+        android:textColor="@color/pink"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/login_page"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_sopt_hub"
+        app:layout_constraintEnd_toEndOf="@id/tv_sopt_hub"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sopt_hub" />
+
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/id_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sopt_hub" />
+
+    <TextView
+        android:id="@+id/tv_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/pass_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/et_id"
+        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="15sp"
+        android:ems="10"
+        android:hint="@string/id_hint"
+        android:background="@drawable/border"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_id"
+        app:layout_constraintTop_toBottomOf="@+id/tv_id"
+        android:autofillHints="no" />
+
+    <EditText
+        android:id="@+id/et_pass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="15sp"
+        android:ems="10"
+        android:hint="@string/pass_hint"
+        android:background="@drawable/border"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_pass"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pass"
+        android:autofillHints="no" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/login_name"
+        android:textColor="@color/white"
+        android:background="@drawable/border_btn"
+        android:outlineProvider="none"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sign"
+        app:layout_constraintEnd_toEndOf="@+id/et_pass"
+        app:layout_constraintStart_toStartOf="@+id/et_pass" />
+
+    <Button
+        android:id="@+id/btn_sign"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/sign_name"
+        android:background="@drawable/border_btn"
+        android:backgroundTint="@color/white"
+        android:outlineProvider="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="@+id/btn_login" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

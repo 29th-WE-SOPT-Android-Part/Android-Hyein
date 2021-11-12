@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/tv_sopt_hub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/sopt_title"
+        android:textColor="@color/pink"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_self"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/myficture"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@id/tv_sopt_hub"
+        app:layout_constraintEnd_toEndOf="@id/tv_sopt_hub"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sopt_hub"
+        android:contentDescription="@string/img_description" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/introduce_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/img_self"
+        app:layout_constraintEnd_toEndOf="@+id/img_self"
+        app:layout_constraintStart_toStartOf="@+id/img_self" />
+    <TextView
+        android:id="@+id/tv_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/introduce_age"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_name" />
+    <TextView
+        android:id="@+id/tv_mbti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/introduce_mbti"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tv_age"
+        app:layout_constraintStart_toStartOf="@+id/tv_age" />
+    <TextView
+        android:id="@+id/tv_myself"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/introduce_myself"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tv_mbti"
+        app:layout_constraintEnd_toEndOf="@+id/tv_mbti"
+        app:layout_constraintStart_toStartOf="@+id/tv_mbti" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
