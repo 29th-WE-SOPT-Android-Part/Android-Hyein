@@ -25,8 +25,6 @@ class FollowerFragment : Fragment() {
     private var _followerAdapter: FollowerAdapter? = null
     private val followerAdapter get() = _followerAdapter ?: error("followerAdapter이 초기화 되지 않았습니다.")
 
-    private val username = "sdu07024"
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,7 +50,7 @@ class FollowerFragment : Fragment() {
 
     private fun getFollowerList(){
         // follower들의 login(id)을 불러옴
-        val call: Call<List<ResponseFollowerData>> = ServiceCreator.gitHubService.getFollowers(username)
+        val call: Call<List<ResponseFollowerData>> = ServiceCreator.gitHubService.getFollowers(ProfileFragment.USERNAME)
 
         call.enqueue(object : Callback<List<ResponseFollowerData>> {
             override fun onResponse(
@@ -61,9 +59,7 @@ class FollowerFragment : Fragment() {
             ) {
                 if(response.isSuccessful){
                     response.body()?.let { setFollowerData(it) }
-                } else{
-                    Log.d("NetworkTest","ResponseFollowerData failed")
-                }
+                } else{ Log.d("NetworkTest","response failed") }
             }
 
             override fun onFailure(call: Call<List<ResponseFollowerData>>, t: Throwable) {
@@ -89,9 +85,7 @@ class FollowerFragment : Fragment() {
                             followerAdapter.followerList.add(FollowerData(it.avatar_url, it.login, it.bio))
                             followerAdapter.notifyDataSetChanged()
                         }
-                    } else{
-                        Log.d("NetworkTest","ResponseUserData failed")
-                    }
+                    } else{ Log.d("NetworkTest","response failed") }
                 }
 
                 override fun onFailure(call: Call<ResponseUserData>, t: Throwable) {

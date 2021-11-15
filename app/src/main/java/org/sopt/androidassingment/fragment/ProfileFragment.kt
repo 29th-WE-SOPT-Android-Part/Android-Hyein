@@ -3,6 +3,7 @@ package org.sopt.androidassingment.fragment
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,12 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import org.sopt.androidassingment.R
+import org.sopt.androidassingment.data.ResponseUserData
 import org.sopt.androidassingment.databinding.FragmentProfileBinding
+import org.sopt.androidassingment.server.ServiceCreator
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -26,7 +32,7 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
 
         initTransactionEvent()
-        initImage()
+        initNetwork()
 
         return binding.root
     }
@@ -81,16 +87,41 @@ class ProfileFragment : Fragment() {
 
     }
 
-    private fun initImage(){
-        Glide.with(this)
-            .load("https://avatars.githubusercontent.com/u/68214704?v=4")
-            .circleCrop()
-            .into(binding.imgSelf)
+    private fun initNetwork(){
+        val call: Call<ResponseUserData> = ServiceCreator.gitHubService.getUsers(USERNAME)
+
+        call.enqueue(object : Callback<ResponseUserData>{
+            override fun onResponse(
+                call: Call<ResponseUserData>,
+                response: Response<ResponseUserData>
+            ) {
+                if(response.isSuccessful){
+                    response.body()?.let { setUserData(it) }
+                } else{ Log.d("NetworkTest","response failed") }
+            }
+
+            override fun onFailure(call: Call<ResponseUserData>, t: Throwable) {
+                Log.e("NetworkTest","error:$t")
+            }
+        })
+
     }
 
+
+    private fun setUserData(user : ResponseUserData){
+        Glide.with(this)
+            .load(user.avatar_url)
+            .circleCrop()
+            .into(binding.imgSelf)
+
+        binding.tvName.text = user.name
+        binding.tvId.text = user.login
+        binding.tvIntroduce.text = user.bio
+    }
 
     companion object{
         const val FOLLOWER_POSITION = 1
         const val REPOSITORY_POSITION = 2
+        const val USERNAME = "sdu07024"
     }
 }

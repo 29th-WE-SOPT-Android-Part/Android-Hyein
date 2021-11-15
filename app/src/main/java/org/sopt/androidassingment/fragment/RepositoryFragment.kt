@@ -23,8 +23,6 @@ class RepositoryFragment : Fragment() {
     private var _repositoryAdapter: RepositoryAdapter? = null
     private val repositoryAdapter get() = _repositoryAdapter ?: error("repositoryAdapter이 초기화 되지 않았습니다.")
 
-    private val username = "sdu07024"
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,7 +47,7 @@ class RepositoryFragment : Fragment() {
     }
 
     private fun getRepoList(){
-        val call: Call<List<ResponseRepoData>> = ServiceCreator.gitHubService.getRepos(username)
+        val call: Call<List<ResponseRepoData>> = ServiceCreator.gitHubService.getRepos(ProfileFragment.USERNAME)
         Log.d("NetworkTest","call ok")
 
         var index = 0
@@ -71,10 +69,7 @@ class RepositoryFragment : Fragment() {
                             index++
                         }
                     }
-                }
-                else{
-                    Log.d("NetworkTest","ResponseUserData failed")
-                }
+                } else{ Log.d("NetworkTest","response failed") }
             }
 
             override fun onFailure(call: Call<List<ResponseRepoData>>, t: Throwable) {
