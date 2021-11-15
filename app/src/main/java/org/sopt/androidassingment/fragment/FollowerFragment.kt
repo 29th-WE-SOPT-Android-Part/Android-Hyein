@@ -101,7 +101,6 @@ class FollowerFragment : Fragment() {
             })
             index += 1
         }
-
     }
     private fun decorationView(){
         binding.rvFollower.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
