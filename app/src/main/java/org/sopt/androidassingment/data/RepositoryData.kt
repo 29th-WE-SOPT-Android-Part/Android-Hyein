@@ -1,4 +1,4 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.data
 
 data class RepositoryData(
     val repo_name:String,

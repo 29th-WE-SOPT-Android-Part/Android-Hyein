@@ -1,5 +1,7 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.server
 
+import org.sopt.androidassingment.server.RequestLoginData
+import org.sopt.androidassingment.server.ResponseLoginData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers

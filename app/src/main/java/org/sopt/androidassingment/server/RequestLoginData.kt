@@ -1,10 +1,9 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.server
 
 import com.google.gson.annotations.SerializedName
 
-data class RequestSignUpData(
+data class RequestLoginData(
     @SerializedName("email")
     val id:String,
-    val name:String,
     val password:String
 )

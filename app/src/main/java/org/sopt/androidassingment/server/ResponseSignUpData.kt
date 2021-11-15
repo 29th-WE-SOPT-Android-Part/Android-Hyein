@@ -1,4 +1,4 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.server
 
 data class ResponseSignUpData(
     val status: Int,

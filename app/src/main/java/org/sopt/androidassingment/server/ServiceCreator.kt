@@ -1,4 +1,4 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.server
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

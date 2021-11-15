@@ -1,10 +1,11 @@
 package org.sopt.androidassingment
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bumptech.glide.Glide
 import org.sopt.androidassingment.databinding.ActivityHomeBinding
+import org.sopt.androidassingment.fragment.CameraFragment
+import org.sopt.androidassingment.fragment.HomeFragment
+import org.sopt.androidassingment.fragment.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding

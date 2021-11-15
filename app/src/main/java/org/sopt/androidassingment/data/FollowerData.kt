@@ -1,4 +1,4 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.data
 
 data class FollowerData(
     val image: String,

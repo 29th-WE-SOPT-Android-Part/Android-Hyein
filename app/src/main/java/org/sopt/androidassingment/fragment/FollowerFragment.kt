@@ -1,4 +1,4 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.sopt.androidassingment.adapter.FollowerAdapter
+import org.sopt.androidassingment.data.FollowerData
 import org.sopt.androidassingment.databinding.FragmentFollowerBinding
 
 class FollowerFragment : Fragment() {

@@ -1,9 +1,9 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import org.sopt.androidassingment.data.FollowerData
 import org.sopt.androidassingment.databinding.ItemFollowerListBinding
 
 class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
