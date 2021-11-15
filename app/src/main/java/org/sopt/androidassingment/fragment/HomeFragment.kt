@@ -20,6 +20,8 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
+        binding.vpHome.isSaveEnabled = false
+
         initAdapter()
         initTabLayout()
 
