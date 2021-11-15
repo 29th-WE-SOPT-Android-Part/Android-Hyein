@@ -1,6 +1,6 @@
-package org.sopt.androidassingment.server
+package org.sopt.androidassingment.data
 
-data class ResponseLoginData(
+data class ResponseSignUpData(
     val status: Int,
     val success: Boolean,
     val message: String,

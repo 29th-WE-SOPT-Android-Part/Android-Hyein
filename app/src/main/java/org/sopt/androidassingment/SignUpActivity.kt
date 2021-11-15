@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import org.sopt.androidassingment.databinding.ActivitySignUpBinding
-import org.sopt.androidassingment.server.RequestSignUpData
-import org.sopt.androidassingment.server.ResponseSignUpData
+import org.sopt.androidassingment.data.RequestSignUpData
+import org.sopt.androidassingment.data.ResponseSignUpData
 import org.sopt.androidassingment.server.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
