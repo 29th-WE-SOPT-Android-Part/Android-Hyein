@@ -15,5 +15,9 @@
     <string name="introduce_name">이름 김혜인</string>
     <string name="introduce_age">나이 22</string>
     <string name="introduce_mbti">MBTI INTP</string>
-    <string name="introduce_myself">안녕하세요 김해인 아니고\n부산인인 김혜인입니다!</string>
+    <string name="introduce_myself">시험기간 살려주세요</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_btn_follower">팔로워\n목록</string>
+    <string name="home_btn_repository">레포지토리\n목록</string>
 </resources>
