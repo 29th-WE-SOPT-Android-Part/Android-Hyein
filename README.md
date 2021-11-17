@@ -1,6 +1,6 @@
 # SOPT - Android Assignment
 
-## Week2
+## Week3
 
 
 
@@ -8,7 +8,7 @@
 
 
 
-<img src="https://user-images.githubusercontent.com/68214704/137966494-544eb7fa-5386-427a-8eee-cd8db2c29130.gif" width="30%" height="30%"/>
+<img src="https://user-images.githubusercontent.com/68214704/139586959-759a121b-1ca9-495c-ab5f-64bf9c1ebc5a.gif" width="30%" height="30%"/>
 
 
 
@@ -18,209 +18,188 @@
 
 ##### 2.  코드(로직) 설명
 
-- **SininlnActivity.kt**
+- **HomeActivity.kt**
+
+  ``````kotlin
+  private fun initBottomNavigation(){
+      val profileFragment = ProfileFragment()
+      val homeFragment = HomeFragment()
+      val cameraFragment = CameraFragment()
+  
+      supportFragmentManager.beginTransaction().add(R.id.container_home, profileFragment).commit()
+      binding.bnvHome.setOnItemSelectedListener {
+          when(it.itemId){
+              R.id.menu_home -> {
+                  val transaction = supportFragmentManager.beginTransaction()
+                  transaction.replace(R.id.container_home, homeFragment).commit()
+                  return@setOnItemSelectedListener true
+              }
+              R.id.menu_person -> {
+                  val transaction = supportFragmentManager.beginTransaction()
+                  transaction.replace(R.id.container_home, profileFragment).commit()
+                  return@setOnItemSelectedListener true
+              }
+              else->{
+                  val transaction = supportFragmentManager.beginTransaction()
+                  transaction.replace(R.id.container_home, cameraFragment).commit()
+                  return@setOnItemSelectedListener true
+              }
+          }
+      }
+  }
+  ``````
+  
+  - `when`을 통해 menu를 관리, `transaction`을 통해 fragment이동
+  
+    
+  
+- **ProfileFragment.kt**
 
   ``````kotlin
   private fun initTransactionEvent(){
       val followerFragment = FollowerFragment()
       val repositoryFragment = RepositoryFragment()
   
-      supportFragmentManager.beginTransaction().add(R.id.container_home, followerFragment).commit()
+      childFragmentManager.beginTransaction().add(R.id.container_profile, followerFragment).commit()
+  
       binding.btnFollower.setOnClickListener{
           if(position == REPOSITORY_POSITION) {
-              val transaction = supportFragmentManager.beginTransaction()
-              transaction.replace(R.id.container_home, followerFragment)
+              val transaction = childFragmentManager.beginTransaction()
+              transaction.replace(R.id.container_profile, followerFragment).commit()
               position = FOLLOWER_POSITION
-              transaction.commit()
+          }
+          with(binding) {
+              btnFollower.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.butterscotch))
+              btnRepository.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.gray))
+              btnFollower.setTextColor(Color.WHITE)
+              btnRepository.setTextColor(Color.BLACK)
           }
       }
       binding.btnRepository.setOnClickListener{
           if(position == FOLLOWER_POSITION) {
-              val transaction = supportFragmentManager.beginTransaction()
-              transaction.replace(R.id.container_home, repositoryFragment)
+              val transaction = childFragmentManager.beginTransaction()
+              transaction.replace(R.id.container_profile, repositoryFragment).commit()
               position = REPOSITORY_POSITION
-              transaction.commit()
+          }
+  
+          with(binding) {
+              btnFollower.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.gray))
+              btnRepository.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this.root.context, R.color.butterscotch))
+              btnRepository.setTextColor(Color.WHITE)
+              btnFollower.setTextColor(Color.BLACK)
           }
       }
-      
-      companion object{
-          const val FOLLOWER_POSITION = 1
-          const val REPOSITORY_POSITION = 2
-      }
+  
   }
   ``````
 
-  - `supportFragmentManger`
+  - `ChildFragmentManager`로 transaction을 관리
+  - `Glide`를 통해 외부의 image를 넣어준다.
+  - `backgroundTintList`와 `setTextColor`를 통해 클릭 시 tint색상과 text색상이 바뀌도록 했다.
 
-    - supportFragmentMager로 FragmentManager 호출
+  
 
-      - `FragmentManager`
-
-        : 앱 프래그먼트에서 작업을 추가, 삭제 또는 교체하고 백 스택에 추가하는 등의 작업을 실행하는 클래스
-
-  - `beginTransaction()`
-
-    - 트랜잭션 작업(추가/교체/삭제) 생성하는 기능
-
-    :key: **작업마다 호출해줘야 하는 함수**
-
-  - `replace()`
-
-    :이전 프래그먼트를 제거 후 추가
-
-  - `commit()`
-
-    - 화면에 반영시킨다
-
-  - `companion object`
-
-    - 어떤 프래그먼트 상태인지를 상수로 나타내어 관리
-
-    
-
-- **activity_home.xml**
+- **HomeFragment.kt**
 
   ``````kotlin
-  <androidx.fragment.app.FragmentContainerView
-      android:id="@+id/container_home"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_marginTop="10dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/btn_repository" />
+  private fun initAdapter(){
+      val fragmentList = listOf(HomeFollowingFragment(), HomeFollowerFragment())
+  
+      homeViewPagerAdapter = HomeTabViewPagerAdapter(this)
+      homeViewPagerAdapter.fragments.addAll(fragmentList)
+  
+      binding.vpHome.adapter = homeViewPagerAdapter
+  }
+  
+  private fun initTabLayout(){
+      val tabLabel = listOf("팔로잉", "팔로워")
+  
+      TabLayoutMediator(binding.tlHome, binding.vpHome) {
+          tab, position -> tab.text = tabLabel[position]
+      }.attach()
+  }
   ``````
   
-  - FragmentContainerView 사용 권장
+  - viewPager2 + TabLayout
   
   
 
 - **FollowerAdapter.kt**
 
   ``````kotlin
-  class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
-      val followerList = mutableListOf<FollowerData>()
-  
-      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
-          val binding = ItemFollowerListBinding.inflate(
-              LayoutInflater.from(parent.context),
-              parent, false
-          )
-          return FollowerViewHolder(binding)
-      }
-  
-      override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
-          holder.onBind(followerList[position])
-      }
-  
-      override fun getItemCount(): Int = followerList.size
-  
-      class FollowerViewHolder(private val binding: ItemFollowerListBinding):
-          RecyclerView.ViewHolder(binding.root) {
-          fun onBind(data: FollowerData){
-              binding.tvName.text = data.name
-              binding.tvIntroduce.text = data.introduction
-          }
-      }
-  }
-  ``````
-
-  - `Adapter`의  함수
-
-    - onCreateViewHolder()
-
-      : viewHolder 생성 (ItemLayout)
-
-    - onBindViewHolder()
-
-      : 재활용 시 사용됨
-
-    - getItemCount()
-
-  - `ViewHolder` 클래스
-
-    - FollowerViewHolder
-
-      : adapter로 전달받은 data를 onBind함수를 통해 붙여준다.
-
-
-
-- **FollowerFragment**
-
-  ``````kotlin
-  private var _binding: FragmentFollowerBinding? = null
-  private val binding get() = _binding ?: error("Binding이 초기화 되지 않았습니다.")
-  private var _followerAdapter: FollowerAdapter? = null
-  private val followerAdapter get() = _followerAdapter ?: error("followerAdapter이 초기화 되지 않았습니다.")
-  override fun onCreateView(
-      inflater: LayoutInflater, container: ViewGroup?,
-      savedInstanceState: Bundle?
-  ): View {
-      _binding = FragmentFollowerBinding.inflate(layoutInflater, container, false)
-  
-      initAdapter()
-  
-      return binding.root
-  }
-  
-  override fun onDestroyView() {
-      super.onDestroyView()
-      _binding = null
-      _followerAdapter = null
-  }
-  
-  private fun initAdapter(){
-      _followerAdapter = FollowerAdapter()
-      binding.rvFollower.adapter = followerAdapter
-  
-      followerAdapter.followerList.addAll(
-          listOf(
-              FollowerData("문다빈", "안드로이드 파트장"),
-              FollowerData("김현아", "기획 파트장"),
-              FollowerData("이성현", "디자인 파트장"),
-              FollowerData("장혜령", "iOS 파트장"),
-              FollowerData("김우영", "서버 파트장"),
-              FollowerData("김의진", "웹 파트장")
-          )
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
+      val binding = ItemFollowerListBinding.inflate(
+          LayoutInflater.from(parent.context),
+          parent, false
       )
-  
-      followerAdapter.notifyDataSetChanged()
+      Glide.with(parent.context)
+      .load("https://avatars.githubusercontent.com/u/68214704?v=4")
+      .circleCrop()
+      .into(binding.ivProfile)
+      return FollowerViewHolder(binding)
   }
   ``````
 
-  - 메모리 누수 방지
-    - binding, followerAdapter같은 경우 좀비객체가 되는 것을 방지하기 위해 onDestroyView에서 객체참조를 해제
+  - `onCreateViewHolder`안에서 Glide를 사용했다.
+    - Glide.with은 매개변수로 activity, fragment, view, context 등을 받는데, adapter안에서 context를 넣어주기 위해 viewGroup을 매개변수로 받아오는 onCreateViewHolder안에서 사용했다.
 
 
 
-- **fragment_repository.xml**
+- **fragment_home.xml**
 
   ``````kotlin
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/rv_follower"
+  <com.google.android.material.tabs.TabLayout
+      android:id="@+id/tl_home"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-      app:spanCount="2"
-      tools:itemCount="4"
-      tools:listitem="@layout/item_repository_list"/>
+      android:layout_height="wrap_content"
+      android:layout_marginTop="36dp"
+      app:tabTextColor="@color/pink"
+      app:tabTextAppearance="@style/tab_text"
+      app:tabIndicatorColor="@color/pink"
+      app:tabIndicatorHeight="3dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_sign">
+  
+      </com.google.android.material.tabs.TabLayout>
+  
+      <androidx.viewpager2.widget.ViewPager2
+      android:id="@+id/vp_home"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tl_home"/>
   ``````
 
-  - `LayoutManager`
-    - item의 배치 규칙을 관리하는 클래스
-      - Grid를 이용하여 격자식으로 보이도록 관리
+  - `tabTextAppearance`
+    - tab의 text들에 style을 적용시켜줄 수 있다.
+  - `tabIndicatorColor`
+    - tab 밑줄의 색을 지정
+  - `tabIndicatorHeight`
+    - tab 밑줄의 높이를 지정
 
 
 
-- **item_repository_list.xml**
+- **activity_home.xml**
 
   ``````kotlin
-  android:ems="10"
-  android:maxLines="1"
-  android:ellipsize="end"
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bnv_home"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="7dp"
+      app:menu="@menu/menu_bottom"
+      app:itemIconTint="@color/selector_bottom_navi"
+      app:itemRippleColor="@color/nav_pink"
+      android:background="@color/white"
+      app:itemTextColor="@color/selector_bottom_navi"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
   ``````
-
-  - ems 크기 10 이상 넘어갈 때, maxLines가 1이므로 한 줄을 넘기지 못하고 ellipsize로 ...을 나타내어 요약하게 된다.
-
+  
+  - `BottomNavigation`선언
+    - `itemIconTint`로 선택 시 색이 바뀌도록 지정하였다.
+  
   
 
 ***
@@ -229,42 +208,32 @@
 
 ##### 3. 배운 내용, 성장한 내용
 
-1. transaction 작업 단위 호출
+1. childFragmentManager
 
    ``````kotlin
-   val transaction = supportFragmentManager.beginTransaction()
+   childFragmentManager.beginTransaction()
    ``````
 
-   - 위 코드를 작업 단위로 호출해주어야 한다.
+   - fragment에서 fragment에 대한 transaction을 진행할 때는 `supportFragmentManager`를 사용할 수 없다.
 
-     :arrow_forward: 그렇지 않으면 제대로 반영이 되지않는다
+     :arrow_forward: 대신 `childFragmentManager`사용
 
    
 
-2. maxLenght
+2. checked
 
    ``````kotlin
-   android:maxLength="10"
-   android:ellipsize="end"
+   <item android:drawable="@drawable/rectangle_border_pink" android:state_focused="true"/>
+   <item android:drawable="@drawable/rectangle_fill_gray" android:state_focused="false"/>
    ``````
 
-   - 위와 같은 식으로 하면 ellipsize가 제대로 적용되지 않았다.
+   - 처음에 bottom navigation 메뉴들을 저런식으로 state_focused로 해서 되지 않았었다.
 
    ``````kotlin
-   android:ems="10"
-   android:maxLines="1"
-   android:ellipsize="end"
+   <item android:color="@color/nav_pink" android:state_checked="true" />
+   <item android:color="@color/nav_gray" android:state_checked="false"/>
    ``````
-
-   - maxLines를 사용했을 땐 ellipsize가 적용이 되었으므로 이것과 ems를 이용하여 적용했다.
-
    
-
-3. spanCount
-
-   ``````kotlin
-   app:spanCount="2"
-   ``````
-
-   - Grid로 나타낼 때 열을 지정하는 값이다.
+   - 이런 식으로 checked를 이용해주어야 한다.
+   
 

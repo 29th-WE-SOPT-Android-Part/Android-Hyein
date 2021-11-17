@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.sopt.androidassingment.databinding.FragmentFollowerBinding
 
 class FollowerFragment : Fragment() {
@@ -19,7 +21,7 @@ class FollowerFragment : Fragment() {
         _binding = FragmentFollowerBinding.inflate(layoutInflater, container, false)
 
         initAdapter()
-
+        decorationView()
         return binding.root
     }
 
@@ -35,15 +37,18 @@ class FollowerFragment : Fragment() {
 
         followerAdapter.followerList.addAll(
             listOf(
-                FollowerData("문다빈", "안드로이드 파트장"),
-                FollowerData("김현아", "기획 파트장"),
-                FollowerData("이성현", "디자인 파트장"),
-                FollowerData("장혜령", "iOS 파트장"),
-                FollowerData("김우영", "서버 파트장"),
-                FollowerData("김의진", "웹 파트장")
+                FollowerData("https://avatars.githubusercontent.com/u/68214704?v=4" ,"김혜인", "안드로이드 파트원"),
+                FollowerData("https://avatars.githubusercontent.com/u/70698151?v=4" ,"문다빈", "안드로이드 파트장"),
+                FollowerData("https://avatars.githubusercontent.com/u/81508084?v=4" ,"한승현", "안드로이드 파트원"),
+                FollowerData("https://avatars.githubusercontent.com/u/52950523?v=4" ,"최유림", "안드로이드 파트원"),
+                FollowerData("https://avatars.githubusercontent.com/u/50603273?v=4" ,"이동기", "안드로이드 파트원")
             )
         )
 
         followerAdapter.notifyDataSetChanged()
+    }
+
+    private fun decorationView(){
+        binding.rvFollower.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
     }
 }

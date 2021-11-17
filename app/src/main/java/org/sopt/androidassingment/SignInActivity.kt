@@ -33,6 +33,6 @@ class SignInActivity : AppCompatActivity() {
 
     private fun signClick(){
         val intent = Intent(this, SignUpActivity::class.java)
-        binding.btnSign.setOnClickListener { startActivity(intent) }
+        binding.tvSign.setOnClickListener { startActivity(intent) }
     }
 }

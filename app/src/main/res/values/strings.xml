@@ -5,19 +5,20 @@
     <string name="pass_name">비밀번호</string>
     <string name="id_name">아이디</string>
     <string name="login_page">로그인</string>
-    <string name="sopt_title">SOPTHub</string>
+    <string name="sopt">SOPT</string>
     <string name="login_name">로그인</string>
-    <string name="sign_name">회원가입</string>
+    <string name="sign">회원가입</string>
     <string name="name_name">이름</string>
     <string name="name_hint">이름을 입력해주세요</string>
     <string name="sign_complete">회원가입 완료</string>
     <string name="img_description">hyein\'s picture</string>
-    <string name="introduce_name">이름 김혜인</string>
-    <string name="introduce_age">나이 22</string>
-    <string name="introduce_mbti">MBTI INTP</string>
-    <string name="introduce_myself">시험기간 살려주세요</string>
+    <string name="home_name">Hyein Kim</string>
+    <string name="home_id">sdu07024</string>
+    <string name="home_introduce">| 초보개발자 김혜인</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="home_btn_follower">팔로워\n목록</string>
-    <string name="home_btn_repository">레포지토리\n목록</string>
+    <string name="home_btn_follower">팔로워 목록</string>
+    <string name="home_btn_repository">레포지토리 목록</string>
+    <string name="sign_no_account">계정이 없으신가요?</string>
+    <string name="flow_ready">준비중입니다</string>
 </resources>

@@ -3,6 +3,7 @@ package org.sopt.androidassingment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.sopt.androidassingment.databinding.ItemFollowerListBinding
 
 class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
@@ -25,8 +26,8 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
     class FollowerViewHolder(private val binding: ItemFollowerListBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: FollowerData){
-            binding.tvName.text = data.name
-            binding.tvIntroduce.text = data.introduction
+            //데이터 바인딩
+            binding.follower = data
         }
     }
 }
