@@ -1,8 +1,9 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.sopt.androidassingment.data.RepositoryData
 import org.sopt.androidassingment.databinding.ItemRepositoryListBinding
 
 class RepositoryAdapter: RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {

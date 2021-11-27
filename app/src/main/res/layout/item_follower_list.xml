@@ -5,7 +5,7 @@
     <data>
         <variable
             name="follower"
-            type="org.sopt.androidassingment.FollowerData" />
+            type="org.sopt.androidassingment.data.FollowerData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
