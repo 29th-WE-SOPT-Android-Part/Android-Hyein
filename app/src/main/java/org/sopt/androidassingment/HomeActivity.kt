@@ -3,9 +3,9 @@ package org.sopt.androidassingment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.sopt.androidassingment.databinding.ActivityHomeBinding
-import org.sopt.androidassingment.fragment.CameraFragment
-import org.sopt.androidassingment.fragment.HomeFragment
-import org.sopt.androidassingment.fragment.ProfileFragment
+import org.sopt.androidassingment.ui.camera.CameraFragment
+import org.sopt.androidassingment.ui.home.HomeFragment
+import org.sopt.androidassingment.ui.profile.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding

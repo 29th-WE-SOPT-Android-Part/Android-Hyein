@@ -1,28 +1,14 @@
 # SOPT - Android Assignment
 
-## Week4
+## Week7
 
 
 
 ##### 1. 시연영상
 
-- app 영상
+<img src="https://user-images.githubusercontent.com/68214704/146550590-594e576d-370c-41f5-8641-38da371f62f1.gif" width="30%" height="30%"/>
 
-<img src="https://user-images.githubusercontent.com/68214704/141417154-694f7412-d83a-480c-8e71-3543ea0d967b.gif" width="30%" height="30%"/>
 
-- postman
-
-  - 로그인
-
-  <img src="https://user-images.githubusercontent.com/68214704/141421492-18aebcff-6cad-4992-b85a-37a56fc4ac1a.JPG">
-
-  
-
-  - 회원가입
-
-    <img src="https://user-images.githubusercontent.com/68214704/141421586-f73024b8-7d79-41fd-877d-452c04da73d1.JPG">
-
-    
 
 ***
 
@@ -33,309 +19,300 @@
 - **build.grandle**
 
   ``````kotlin
-   // 서버 연결을 위한 Retrofit2
-  implementation "com.squareup.retrofit2:retrofit:2.9.0"
-  
-  // Retrofit2에서 gson 사용을 위한 컨버터
-  implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-  
-  // gson
-  implementation "com.google.code.gson:gson:2.8.6"
-  ``````
-
-  - **Retrofit2** : 서버와 클라이언트 간 http 통신을 위한 라이브러리
-    - JSON 구조의 데이터를 쉽게 가져오고 업로드
-    - **JSON** : 프로그래밍 언어 :x: 플랫폼 독립형 데이터 포맷 :o:
-  - **gson** : Java에서 Json을 파싱하고, 생성하기 위해 사용되는 구글에서 개발한 오픈소스
-    - Retrofit2는 gson을 자바 객체로 변환하는 자체 컨버터를 가지고 있지 않으므로 따로 넣어줘야 한다.
-
-- **AndroidManifest.xml**
-
-  ``````kotlin
-  <uses-permission android:name="android.permission.INTERNET"/>
-  
-  <application
-  	android:usesCleartextTraffic="true"
-  ``````
-
-  - 인터넷 접속 권한 부여
-  - 따로 http 통신을 하기 위해선 `android:usesCleartextTraffic`를 true로 해주어야 한다.
-
-  
-
-- **RequestLoginData**
-
-  ``````kotlin
-  import com.google.gson.annotations.SerializedName
-  
-  data class RequestLoginData(
-      @SerializedName("email")
-      val id:String,
-      val password:String
-  )
-  ``````
-
-- **RequestSignUpData**
-
-  ``````kotlin
-  import com.google.gson.annotations.SerializedName
-  
-  data class RequestSignUpData(
-      @SerializedName("email")
-      val id:String,
-      val name:String,
-      val password:String
-  )
+  // Navigation
+  implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+  implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
   ``````
   
-  - **서버 Request 객체**
-  - json객체의 키 값과 타입을 데이터 클래스의 변수명과 타입에 일치 시킨다.
-  - `SerializedName` : json의 키 값 / 클래스의 변수명 이 다를 경우 맵핑 시켜준다.
-    - ex) json의 키 값 : email / 클래스의 변수명 : id
+  - navigation component 사용을 위해 추가해준다.
   
   
-
-- **ResponseLoginData**
+  
+- **nav_onboarding.xml**
 
   ``````kotlin
-  data class ResponseLoginData(
-      val status: Int,
-      val success: Boolean,
-      val message: String,
-      val data: Data
-  ) {
-      data class Data(
-          val id: Int,
-          val name: String,
-          val email: String
-      )
+  <?xml version="1.0" encoding="utf-8"?>
+  <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/nav_onboarding"
+      app:startDestination="@id/boardingFragment1">
+  
+      <fragment
+          android:id="@+id/boardingFragment1"
+          android:name="org.sopt.androidassingment.ui.onboarding.BoardingFragment1"
+          android:label="fragment_boarding1"
+          tools:layout="@layout/fragment_boarding1" >
+          <action
+              android:id="@+id/action_boardingFragment1_to_boardingFragment2"
+              app:destination="@id/boardingFragment2" />
+      </fragment>
+      <fragment
+          android:id="@+id/boardingFragment3"
+          android:name="org.sopt.androidassingment.ui.onboarding.BoardingFragment3"
+          android:label="fragment_boarding3"
+          tools:layout="@layout/fragment_boarding3" >
+          <action
+              android:id="@+id/action_boardingFragment3_to_signInActivity"
+              app:destination="@id/signInActivity" />
+      </fragment>
+      <fragment
+          android:id="@+id/boardingFragment2"
+          android:name="org.sopt.androidassingment.ui.onboarding.BoardingFragment2"
+          android:label="fragment_boarding2"
+          tools:layout="@layout/fragment_boarding2" >
+          <action
+              android:id="@+id/action_boardingFragment2_to_boardingFragment3"
+              app:destination="@id/boardingFragment3" />
+      </fragment>
+      <activity
+          android:id="@+id/signInActivity"
+          android:name="org.sopt.androidassingment.SignInActivity"
+          android:label="activity_sign_in"
+          tools:layout="@layout/activity_sign_in" />
+  </navigation>
+  ``````
+
+  - onboarding시 fragment간의 이동을 효율적으로 하기 위해 만든 navigation 파일
+
+  
+
+- **nav_home.xml**
+
+  ``````kotlin
+  <?xml version="1.0" encoding="utf-8"?>
+  <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/nav_home"
+      app:startDestination="@id/profileFragment">
+  
+      <fragment
+          android:id="@+id/profileFragment"
+          android:name="org.sopt.androidassingment.ui.profile.ProfileFragment"
+          android:label="fragment_profile"
+          tools:layout="@layout/fragment_profile" >
+          <action
+              android:id="@+id/action_profileFragment_to_settingActivity"
+              app:destination="@id/settingActivity" />
+      </fragment>
+      <activity
+          android:id="@+id/settingActivity"
+          android:name="org.sopt.androidassingment.SettingActivity"
+          android:label="activity_setting"
+          tools:layout="@layout/activity_setting" />
+  </navigation>
+  ``````
+
+  - profile fragment에서 setting activity(자동로그인 해제하는 페이지)로 가기 위해 만든 navigation
+
+
+
+- **BoardingFragment1, 2**
+
+  ``````kotlin
+  private fun clickBtn(){
+      binding.btnNext1.setOnClickListener{
+          findNavController().navigate(R.id.action_boardingFragment1_to_boardingFragment2)
+      }
   }
   ``````
-
-- **ResponseSignUpData**
-
-  ``````kotlin
-  data class ResponseSignUpData(
-      val status: Int,
-      val success: Boolean,
-      val message: String,
-      val data: Data
-  ) {
-      data class Data(
-          val id: Int,
-          val name: String,
-          val email: String
-      )
-  }
-  ``````
-
-  - **서버 Response 객체**
-
-  - json객체의 키 값과 타입을 데이터 클래스의 변수명과 타입에 일치 시킨다.
-
-  - 중첩 클래스 구조
-
-    - Data 클래스를 중첩 클래스 구조로 만들어 주었다.
-
-    
-
-- **LoginService**
-
-  ``````kotlin
-  interface LoginService {
-      @Headers("Content-Type: application/json")
-      @POST("user/login")
-      fun postLogin(
-          @Body requestLoginData: RequestLoginData
-      ) : Call<ResponseLoginData>
-  }
-  ``````
-
-
-- **SignUpService**
-
-  ``````kotlin
-  interface SignUpService {
-      @Headers("Content-Type: application/json")
-      @POST("user/signup")
-      fun postSignUp(
-          @Body requestSingUpData: RequestSignUpData
-      ) : Call<ResponseSignUpData>
-  }
-  ``````
-
-  - **Retrofit Interface**
-
-    - 서버에 어떠한 요청을 보내면 어떻게 온다는 **일종의 상호작용 방법을 정의**하는 부분
-
-  - `@Headers` : @Header 어노테이션 이용하여 헤더값을 넣어준다.
-
-  - `@POST` : HTTP 메소드(POST, GET, ..) 정의 후 해당 API의 url을 작성
-
-  - `postSignUp`함수
-
-    - `@Body` : RequestBody 데이터를 넣어 준다. (실행시켰을 때 넘길 데이터)
-
-    - `Call<Type>` : 동기적 또는 비동기적으로 Type을 받아오는 객체
-
-      - ResponseLoginData/ResponseSignUpData 을 받아온다.
-
-      
-
-- **ServiceCreator**
-
-  ``````kotlin
-  object ServiceCreator {
-      private const val BASE_URL = "https://asia-northeast3-we-sopt-29.cloudfunctions.net/api/"
   
-      private val retrofit : Retrofit = Retrofit
-          .Builder() // 레트로핏 빌더 생성(생성자 호출)
-          .baseUrl(BASE_URL) // 빌더 객체의 baseUrl호출
-          .addConverterFactory(GsonConverterFactory.create()) // gson컨버터 연동
-          .build() // Retrofit 객체 반환
+  - action을 설정해주어 버튼 클릭 시 fragment가 전환되게 한다.
   
-      // 인터페이스 객체를 create에 넘겨 실제 구현체 생성
-      val loginService: LoginService = retrofit.create(LoginService::class.java)
-      val singUpService : SignUpService = retrofit.create(SignUpService::class.java)
-  }
-  ``````
-
-  - **Retrofit Interface 실제 구현체**
-    
-    - Retrofit Interface를 실질적으로 구현하여 생성해주는 객체
-    - 정의한 상호작용 방법을 실제로 구현하는 부분
-    
-  - `retrofit` : Retrofit 객체 생성
-
-  - `loginService`, `signUpService` : 실제 구현체
-
-  - **Object**
-
-    - 싱글톤
-
-      : 최초 한번만 메모리를 할당하고(Static) 그 메모리에 인스턴스를 만들어 사용하는 디자인 패턴
-
-      - 서버 호출이 필요할 때마다 Retrofit 객체를 만드는 것이 아니라 *한 번*만 생성
-
-
-
-
-- **SinginActivity**
+- **BoardingFragment3**
 
   ``````kotlin
-  private fun loginClick(){
-      binding.btnLogin.setOnClickListener {
-          initNetwork()
+  private fun startClick(){
+      binding.btnStart.setOnClickListener{
+          findNavController().navigate(R.id.action_boardingFragment3_to_signInActivity)
+          requireActivity().finish()
+      }
+  }
+  ``````
+  
+  - 마지막 온보딩 프래그먼트에서 button 클릭 시 로그인 activity로 전환되게 끔 한다.
+  - 호스트 activity는 `requireActivity().finish()` 를 이용하여 종료
+  
+  
+  
+- **SignInActivity**
+
+  ``````kotlin
+  private fun initClickEvent(){
+      binding.ibCheck.setOnClickListener{
+          binding.ibCheck.isSelected = !binding.ibCheck.isSelected
+  
+          SOPTSharedpreferences.setAutoLogin(this, binding.ibCheck.isSelected)
       }
   }
   
-  private fun initNetwork(){
-      val requestLoginData = RequestLoginData(
-          id = binding.etId.text.toString(),
-          password = binding.etPass.text.toString()
-      )
-  
-      val call: Call<ResponseLoginData> = ServiceCreator.loginService.postLogin(requestLoginData)
-  
-      call.enqueue(object : Callback<ResponseLoginData> {
-          override fun onResponse(
-              call: Call<ResponseLoginData>,
-              response: Response<ResponseLoginData>
-          ) {
-              if(response.isSuccessful){
-                  Toast.makeText(this@SignInActivity, "${response.body()?.data?.name}님 반갑습니다", Toast.LENGTH_SHORT).show()
-  
-                  startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
-              } else
-              Toast.makeText(this@SignInActivity, "로그인에 실패하셨습니다", Toast.LENGTH_SHORT).show()
-  
-          }
-  
-          override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
-              Log.e("NetworkTest","error:$t")
-          }
-      })
-  }
-  ``````
-
-- **SingUpActivity**
-
-  ``````kotlin
-  private fun signCompleteClick(){
-      binding.btnLogin.setOnClickListener {
-          initNetwork()
+  private fun isAutoLogin(){
+      if(SOPTSharedpreferences.getAutoLogin(this)){
+          shortToast("자동로그인 되었습니다")
+          startActivity(Intent(this, HomeActivity::class.java))
+          finish()
       }
   }
+  ``````
+
+  - 자동 로그인 버튼 클릭 시 자동로그인이 설정되게 끔 한 후(`setAutoLogin`), 설정이 되어있다면(`getAutoLogin`) 자동로그인이 되게끔 만들었다.(activity 전환)
+
+- **SettingActivity**
+
+  ``````kotlin
+  private fun initClickEvent(){
+      binding.tvAutoCancle.setOnClickListener{
+          shortToast("자동 로그인 해제")
+          SOPTSharedpreferences.removeAutoLogin(this)
+          SOPTSharedpreferences.clearStorage(this)
+      }
+  }
+  ``````
   
-  private fun initNetwork(){
-      val requestSignUpData = RequestSignUpData(
-          id = binding.etId.text.toString(),
-          name = binding.etName.text.toString(),
-          password = binding.etPass.text.toString()
-      )
+  - 버튼 클릭 시 `removeAutoLogin`과 `clearStorage`를 통해 자동 로그인이 해제되게끔 만들었다.
+
+
+- **SOPTSharedpreferences**
+
+  ``````kotlin
+  object SOPTSharedpreferences {
+      private const val STORAGE_KEY="USER_AUTH"
+      private const val AUTO_LOGIN = "AUTO_LOGIN"
   
-      val call: Call<ResponseSignUpData> = ServiceCreator.singUpService.postSignUp(requestSignUpData)
+      fun getAutoLogin(context: SignInActivity): Boolean{
+          val preferences = getPreference(context)
+          return preferences.getBoolean(AUTO_LOGIN, false)
+      }
   
-      call.enqueue(object : Callback<ResponseSignUpData> {
-          override fun onResponse(
-              call: Call<ResponseSignUpData>,
-              response: Response<ResponseSignUpData>
-          ) {
-              if(response.isSuccessful){
-                  finish()
-              } else
-              Toast.makeText(this@SignUpActivity, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
+      fun setAutoLogin(context: SignInActivity, value: Boolean){
+          val preferences = getPreference(context)
+          preferences.edit()
+              .putBoolean(AUTO_LOGIN, value)
+              .apply()
+      }
   
-          }
+      fun removeAutoLogin(context: Context){
+          val preferences = getPreference(context)
+          preferences.edit()
+              .remove(AUTO_LOGIN)
+              .apply()
+      }
   
-          override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
-              TODO("Not yet implemented")
-          }
-      })
+      fun clearStorage(context: Context){
+          val preferences = getPreference(context)
+          preferences.edit()
+              .clear()
+              .apply()
+      }
+  
+      private fun getPreference(context: Context): SharedPreferences = context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE)
   }
   ``````
 
-  - `initNetwork()` : 서버와 통신하는 코드
+  - 중복되는 코드는 함수(`getPreference`)로 만들어서 바로 변수에 대입해주었다.
 
-  - `requestLoginData`, `requestSignUpData`
+    
 
-    - 통신할 때 필요한 data
-    - 서버에 요청을 보내기 위한 RequestData
+- **activity_on_boarding.xml**
 
-  - `call` : interface구현체에 접근하여 Call 객체를 받아온다
-
-  - `call.enqueue` : 서버 통신을 비동기적으로 요청
-
-    - `Callback` 익명 클래스 선언
-
-      :arrow_forward: Call 객체의 비동기 작업 이후 작업이 끝날 때 행동을 Callback 객체로 표현
-
-    - `onResponse`
-
-      - Status Code가 200~300 사이 일 때 reponse.isSuccessful이 true를 반환
-
-    - `onFailur`
-
-      - reponse.isSuccessful가 false이거나 body()에 값이 없을 경우
-
-  - 버튼 클릭 시 `initNetwork()` 호출
-
+  ``````kotlin
+  <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/container_start"
+      android:name="androidx.navigation.fragment.NavHostFragment"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:defaultNavHost="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cl_top"
+      app:navGraph="@navigation/nav_onboarding"/>
+  ``````
   
+  - navigation을 쓰는 경우, host activity에 위와 같은 코드를 넣어 설정해주어야 한다.
+    
+
+
 
 ***
 
 
 
-##### 3. 배운 내용, 성장한 내용
+##### 3. Util 클래스 코드 및 패키징 방식
 
-1. **Object**
+- 최상단
 
-   - 왜 class가 아닌 object를 쓰는가 의문을 가졌는데, object의 기능(싱글톤)을 알게되었다
+  - data / ui / util 세가지로 분류했습니다.
 
-2. 비동기 처리
+  <img src="https://user-images.githubusercontent.com/68214704/146551837-03f9d8b0-1fe2-4ad7-bab3-e2d1c390d975.png" align="left">
 
-   ``````kotlin
-   call.enqueue(object : Callback<ResponseSignUpData> {})
-   ``````
 
-   - 비동기 처리를 위해 위와 같은 코드를 사용함을 알게 되었다
+
+- data package
+
+  <img src="https://user-images.githubusercontent.com/68214704/146552130-efa64041-d222-4c8c-a7ce-3f44f92c9f7a.png" align="left">
+
+  
+
+  - request / response / server package
+
+    <img src="https://user-images.githubusercontent.com/68214704/146552382-83837704-b228-4424-a334-81a7392927de.png" align="left">
+
+
+
+- ui package
+
+  <img src="https://user-images.githubusercontent.com/68214704/146552496-a4d74b98-f860-48ae-8539-f16a8a07b787.png" align="left">
+
+  
+
+  - camera / home / onboarding / profile
+
+    <img src="https://user-images.githubusercontent.com/68214704/146552625-3a505d03-1b42-4aff-af91-b09049dafa76.png" align="left">
+
+    
+
+
+
+:arrow_forward: data package : 기능별 분류
+
+:arrow_forward: ui package : view 별 분류
+
+
+
+- util class
+
+  util class는 아직 뭘 만들어야할지 몰라서 작성하지 않았고, 확장함수 하나만 작성하였다
+
+  ``````kotlin
+  fun Context.shortToast(message: String){
+      Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+  }
+  ``````
+
+  - toast 함수
+
+
+
+***
+
+
+
+##### 4. 배운 내용, 성장한 내용
+
+- `requirActivity`
+
+  ``````kotlin
+  requireActivity().finish()
+  
+  requireActivity().shortToast("")
+  ``````
+
+  - fragment에서 activity에서 쓸 수 있을 것 같은? 함수들을 사용할 때는 requireActivity를 이용하여 호출하면 된 다는 것을 알게 되었다.
+
+
+
+- gradle ..
+
+  - warning 표시가 되어있던 gradle의 implement 구문들을 alt+enter로 다 업데이트 하였는데 그 이후 이상한 에러들이 나타나서 고치기가 힘들었다.
+
+    주의해서 고쳐야 할 듯 하다..
