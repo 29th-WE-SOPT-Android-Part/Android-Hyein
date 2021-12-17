@@ -1,4 +1,4 @@
-package org.sopt.androidassingment.fragment
+package org.sopt.androidassingment.ui.profile
 
 import android.os.Bundle
 import android.util.Log
@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.sopt.androidassingment.adapter.RepositoryAdapter
 import org.sopt.androidassingment.data.RepositoryData
-import org.sopt.androidassingment.data.ResponseRepoData
+import org.sopt.androidassingment.data.response.ResponseRepoData
 import org.sopt.androidassingment.databinding.FragmentRepositoryBinding
-import org.sopt.androidassingment.server.ServiceCreator
+import org.sopt.androidassingment.data.server.ServiceCreator
+import org.sopt.androidassingment.ui.profile.adapter.RepositoryAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,7 +47,9 @@ class RepositoryFragment : Fragment() {
     }
 
     private fun getRepoList(){
-        val call: Call<List<ResponseRepoData>> = ServiceCreator.gitHubService.getRepos(ProfileFragment.USERNAME)
+        val call: Call<List<ResponseRepoData>> = ServiceCreator.gitHubService.getRepos(
+            ProfileFragment.USERNAME
+        )
         Log.d("NetworkTest","call ok")
 
         var index = 0

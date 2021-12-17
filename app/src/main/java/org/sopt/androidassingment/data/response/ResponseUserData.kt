@@ -1,4 +1,4 @@
-package org.sopt.androidassingment.data
+package org.sopt.androidassingment.data.response
 
 data class ResponseUserData(
     val login : String,

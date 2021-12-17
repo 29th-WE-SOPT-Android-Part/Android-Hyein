@@ -1,7 +1,7 @@
-package org.sopt.androidassingment.server
+package org.sopt.androidassingment.data.server
 
-import org.sopt.androidassingment.data.RequestSignUpData
-import org.sopt.androidassingment.data.ResponseSignUpData
+import org.sopt.androidassingment.data.request.RequestSignUpData
+import org.sopt.androidassingment.data.response.ResponseSignUpData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers

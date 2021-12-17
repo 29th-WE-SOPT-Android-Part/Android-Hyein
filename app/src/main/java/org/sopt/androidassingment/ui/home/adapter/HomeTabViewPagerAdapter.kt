@@ -1,4 +1,4 @@
-package org.sopt.androidassingment.adapter
+package org.sopt.androidassingment.ui.home.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

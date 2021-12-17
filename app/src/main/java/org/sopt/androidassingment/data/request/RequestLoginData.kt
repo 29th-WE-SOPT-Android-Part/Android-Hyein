@@ -1,4 +1,4 @@
-package org.sopt.androidassingment.data
+package org.sopt.androidassingment.data.request
 
 import com.google.gson.annotations.SerializedName
 

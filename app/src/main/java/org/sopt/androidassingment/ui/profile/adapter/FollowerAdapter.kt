@@ -1,4 +1,4 @@
-package org.sopt.androidassingment.adapter
+package org.sopt.androidassingment.ui.profile.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

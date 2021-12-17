@@ -1,4 +1,4 @@
-package org.sopt.androidassingment.fragment
+package org.sopt.androidassingment.ui.profile
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -11,9 +11,9 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import org.sopt.androidassingment.R
-import org.sopt.androidassingment.data.ResponseUserData
+import org.sopt.androidassingment.data.response.ResponseUserData
 import org.sopt.androidassingment.databinding.FragmentProfileBinding
-import org.sopt.androidassingment.server.ServiceCreator
+import org.sopt.androidassingment.data.server.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,8 +1,8 @@
-package org.sopt.androidassingment.server
+package org.sopt.androidassingment.data.server
 
-import org.sopt.androidassingment.data.ResponseFollowerData
-import org.sopt.androidassingment.data.ResponseRepoData
-import org.sopt.androidassingment.data.ResponseUserData
+import org.sopt.androidassingment.data.response.ResponseFollowerData
+import org.sopt.androidassingment.data.response.ResponseRepoData
+import org.sopt.androidassingment.data.response.ResponseUserData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

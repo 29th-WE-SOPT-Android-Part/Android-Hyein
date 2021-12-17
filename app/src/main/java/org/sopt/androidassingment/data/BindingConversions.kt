@@ -1,4 +1,4 @@
-package org.sopt.androidassingment
+package org.sopt.androidassingment.data
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

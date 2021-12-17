@@ -1,4 +1,4 @@
-package org.sopt.androidassingment.fragment
+package org.sopt.androidassingment.ui.profile
 
 import android.os.Bundle
 import android.util.Log
@@ -8,13 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.sopt.androidassingment.adapter.FollowerAdapter
 import org.sopt.androidassingment.data.FollowerData
-import org.sopt.androidassingment.data.ResponseFollowerData
-import org.sopt.androidassingment.data.ResponseUserData
+import org.sopt.androidassingment.data.response.ResponseFollowerData
+import org.sopt.androidassingment.data.response.ResponseUserData
 import org.sopt.androidassingment.databinding.FragmentFollowerBinding
-import org.sopt.androidassingment.server.GitHubService
-import org.sopt.androidassingment.server.ServiceCreator
+import org.sopt.androidassingment.data.server.ServiceCreator
+import org.sopt.androidassingment.ui.profile.adapter.FollowerAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,7 +49,9 @@ class FollowerFragment : Fragment() {
 
     private fun getFollowerList(){
         // follower들의 login(id)을 불러옴
-        val call: Call<List<ResponseFollowerData>> = ServiceCreator.gitHubService.getFollowers(ProfileFragment.USERNAME)
+        val call: Call<List<ResponseFollowerData>> = ServiceCreator.gitHubService.getFollowers(
+            ProfileFragment.USERNAME
+        )
 
         call.enqueue(object : Callback<List<ResponseFollowerData>> {
             override fun onResponse(

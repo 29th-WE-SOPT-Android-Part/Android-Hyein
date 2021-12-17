@@ -6,9 +6,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import org.sopt.androidassingment.databinding.ActivitySignInBinding
-import org.sopt.androidassingment.data.RequestLoginData
-import org.sopt.androidassingment.data.ResponseLoginData
-import org.sopt.androidassingment.server.ServiceCreator
+import org.sopt.androidassingment.data.request.RequestLoginData
+import org.sopt.androidassingment.data.response.ResponseLoginData
+import org.sopt.androidassingment.data.server.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
