@@ -13,7 +13,7 @@
         android:fontFamily="@font/noto_sans_kr"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="SOPTHub에 오신걸\n 환영합니다!"
+        android:text="SOPTHub에서 즐거운 시간\n보내시길 바랍니다!"
         android:textColor="@color/pink"
         android:textFontWeight="700"
         android:textSize="25sp"

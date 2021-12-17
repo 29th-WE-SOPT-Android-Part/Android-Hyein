@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_onboarding">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_onboarding"
+    app:startDestination="@id/boardingFragment1">
 
+    <fragment
+        android:id="@+id/boardingFragment1"
+        android:name="org.sopt.androidassingment.ui.onboarding.BoardingFragment1"
+        android:label="fragment_boarding1"
+        tools:layout="@layout/fragment_boarding1" >
+        <action
+            android:id="@+id/action_boardingFragment1_to_boardingFragment2"
+            app:destination="@id/boardingFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardingFragment3"
+        android:name="org.sopt.androidassingment.ui.onboarding.BoardingFragment3"
+        android:label="fragment_boarding3"
+        tools:layout="@layout/fragment_boarding3" >
+        <action
+            android:id="@+id/action_boardingFragment3_to_signInActivity"
+            app:destination="@id/signInActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardingFragment2"
+        android:name="org.sopt.androidassingment.ui.onboarding.BoardingFragment2"
+        android:label="fragment_boarding2"
+        tools:layout="@layout/fragment_boarding2" >
+        <action
+            android:id="@+id/action_boardingFragment2_to_boardingFragment3"
+            app:destination="@id/boardingFragment3" />
+    </fragment>
+    <activity
+        android:id="@+id/signInActivity"
+        android:name="org.sopt.androidassingment.SignInActivity"
+        android:label="activity_sign_in"
+        tools:layout="@layout/activity_sign_in" />
 </navigation>

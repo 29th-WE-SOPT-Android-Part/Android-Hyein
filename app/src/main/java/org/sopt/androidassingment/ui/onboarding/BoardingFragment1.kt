@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import org.sopt.androidassingment.R
 import org.sopt.androidassingment.databinding.FragmentBoarding1Binding
 
@@ -15,13 +16,22 @@ class BoardingFragment1 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentBoarding1Binding.inflate(layoutInflater, container, false)
+
+        clickBtn()
+
         return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun clickBtn(){
+        binding.btnNext1.setOnClickListener{
+            findNavController().navigate(R.id.action_boardingFragment1_to_boardingFragment2)
+        }
     }
 }
