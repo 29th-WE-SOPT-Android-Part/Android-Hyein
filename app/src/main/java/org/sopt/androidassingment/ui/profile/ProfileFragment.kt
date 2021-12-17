@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import org.sopt.androidassingment.R
 import org.sopt.androidassingment.data.response.ResponseUserData
@@ -33,6 +34,7 @@ class ProfileFragment : Fragment() {
 
         initTransactionEvent()
         initNetwork()
+        settingClick()
 
         return binding.root
     }
@@ -41,6 +43,12 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
         _profileAdapter = null
+    }
+
+    private fun settingClick(){
+        binding.ivSetting.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_settingActivity)
+        }
     }
 
     private fun initTransactionEvent(){

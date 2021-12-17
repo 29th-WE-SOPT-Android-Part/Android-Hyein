@@ -13,8 +13,11 @@
         android:theme="@style/Theme.AndroidAssingment"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".OnBoardingActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +32,7 @@
             android:exported="true" />
         <activity
             android:name=".SignInActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
     </application>
 
 </manifest>

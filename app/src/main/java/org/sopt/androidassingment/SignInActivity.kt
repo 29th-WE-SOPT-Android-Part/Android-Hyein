@@ -9,6 +9,7 @@ import org.sopt.androidassingment.databinding.ActivitySignInBinding
 import org.sopt.androidassingment.data.request.RequestLoginData
 import org.sopt.androidassingment.data.response.ResponseLoginData
 import org.sopt.androidassingment.data.server.ServiceCreator
+import org.sopt.androidassingment.util.extension.shortToast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,6 +24,8 @@ class SignInActivity : AppCompatActivity() {
 
         loginClick()
         signClick()
+        initClickEvent()
+        isAutoLogin()
         setContentView(binding.root)
     }
 
@@ -63,5 +66,21 @@ class SignInActivity : AppCompatActivity() {
                 Log.e("NetworkTest","error:$t")
             }
         })
+    }
+
+    private fun initClickEvent(){
+        binding.ibCheck.setOnClickListener{
+            binding.ibCheck.isSelected = !binding.ibCheck.isSelected
+
+            SOPTSharedpreferences.setAutoLogin(this, binding.ibCheck.isSelected)
+        }
+    }
+
+    private fun isAutoLogin(){
+        if(SOPTSharedpreferences.getAutoLogin(this)){
+            shortToast("자동로그인 되었습니다")
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
 }
