@@ -22,9 +22,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="온보딩"
             android:textSize="15dp"
+            android:fontFamily="@font/noto_sans_kr"
+            android:textFontWeight="700"
+            android:includeFontPadding="false"
             android:gravity="center"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/noto_sans_kr_bold"
+            android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
